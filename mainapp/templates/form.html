@@ -1,0 +1,37 @@
+
+<h1>Buscador de Vuelos</h1>
+    
+
+<form method="POST">
+    {%csrf_token%}
+    {{form}}
+    <button>Buscar</button>
+</form>
+
+<h1>Resultados</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Numero de Vuelo</th>
+            <th>Aeropuerto de salida</th>
+            <th>Aeropuerto de llegada</th>
+            <th>Hora de salida</th>
+            <th>Hora de llegada</th>
+            <th>Numero de paradas</th>
+            <th>Duracion (minutos)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.departure_airport}}</td>
+            <td>{{item.arrival_airport}}</td>
+            <td>{{item.departure_time}}</td>
+            <td>{{item.arrival_time}}</td>
+            <td>{{item.stops}}</td>
+            <td>{{item.duration_mins}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
